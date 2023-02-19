@@ -53,49 +53,53 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import type { defineComponent } from "vue";
-import EventBus from "./common/EventBus";
+<script lang="ts">
+import {onMounted, onBeforeUnmount} from "vue";
+import { computed,defineComponent } from 'vue';
+//import {EventBus} from './common/EventBus';
 
-export default {
-  setup {
+export default defineComponent({
+  setup() {
     computed: {
-      currentUser() {
-        return this.$store.state.auth.user;
-      },
-      showAdminBoard() {
-        if (this.currentUser && this.currentUser['roles']) {
+      const currentUser = () => {
+        /*return this.$store.state.auth.user;*/
+      }
+
+      const showAdminBoard = () => {
+        /*if (this.currentUser && this.currentUser['roles']) {
           return this.currentUser['roles'].includes('ROLE_ADMIN');
-        }
+        }*/
 
         return false;
-      },
-      showModeratorBoard() {
-        if (this.currentUser && this.currentUser['roles']) {
+      }
+      
+      const showModeratorBoard = () => {
+        /*if (this.currentUser && this.currentUser['roles']) {
           return this.currentUser['roles'].includes('ROLE_MODERATOR');
-        }
+        }*/
 
         return false;
       }
     }
     
     const logOut = () => {
-        this.$store.dispatch('auth/logout')
+        /*this.$store.dispatch('auth/logout')        
         this.$router.push('/login')
+        */
       }
     
 
-    onMounted(async () => {
-      await EventBus.on("logout", () => {
+    onMounted(() => {
+      /*EventBus.on("logout", () => {
         this.logOut();
-      });
+      });*/
     })
 
-    onBeforeUnmount(async () => {
-      await EventBus.remove("logout");
+    onBeforeUnmount(() => {
+      //EventBus.remove("logout");
     })
 
-    return {onBeforeUnmount}
+    return {showAdminBoard, logOut, onBeforeUnmount}
   }
-}
+})
 </script>
