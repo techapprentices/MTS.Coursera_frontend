@@ -25,17 +25,28 @@
 </template>
 
 <script lang="ts">
-export default {
-  name: 'Profile',
-  computed: {
-    currentUser() {
-      return this.$store.state.auth.user;
-    }
-  },
-  mounted() {
-    if (!this.currentUser) {
-      this.$router.push('/login');
-    }
+import { computed, defineComponent, onMounted } from 'vue';
+
+export default defineComponent ({
+  setup() {
+    //name: 'Profile',
+
+    const currentUser = computed(() => {
+      //return this.$store.state.auth.user;
+    })
+
+
+    onMounted(() => {
+      /*EventBus.on("logout", () => {
+        this.logOut();
+      });*/
+      /*if (!this.currentUser) {
+        this.$router.push('/login');
+      }*/
+
+    })
+
+    return {currentUser, onMounted }
   }
-};
+});
 </script>

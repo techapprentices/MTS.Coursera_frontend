@@ -60,28 +60,48 @@ import { computed,defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {
-    computed: {
+    /*computed: {
       const currentUser = () => {
-        /*return this.$store.state.auth.user;*/
+        //return this.$store.state.auth.user;
       }
 
       const showAdminBoard = () => {
-        /*if (this.currentUser && this.currentUser['roles']) {
-          return this.currentUser['roles'].includes('ROLE_ADMIN');
-        }*/
+        //if (this.currentUser && this.currentUser['roles']) {
+          //return this.currentUser['roles'].includes('ROLE_ADMIN');
+        //}
 
         return false;
       }
       
       const showModeratorBoard = () => {
-        /*if (this.currentUser && this.currentUser['roles']) {
-          return this.currentUser['roles'].includes('ROLE_MODERATOR');
-        }*/
+        //if (this.currentUser && this.currentUser['roles']) {
+          //return this.currentUser['roles'].includes('ROLE_MODERATOR');
+        //}
 
         return false;
       }
-    }
-    
+    }*/
+
+      const currentUser = computed(() => null)
+
+      const showAdminBoard = computed(() => {
+        //if (this.currentUser && this.currentUser['roles']) {
+          //return this.currentUser['roles'].includes('ROLE_ADMIN');
+        //}
+
+        return false;
+      })
+
+      const showModeratorBoard = computed(() => {
+        //if (this.currentUser && this.currentUser['roles']) {
+          //return this.currentUser['roles'].includes('ROLE_MODERATOR');
+        //}
+
+        return false;
+      })
+
+      
+
     const logOut = () => {
         /*this.$store.dispatch('auth/logout')        
         this.$router.push('/login')
@@ -99,7 +119,7 @@ export default defineComponent({
       //EventBus.remove("logout");
     })
 
-    return {showAdminBoard, logOut, onBeforeUnmount}
+    return {currentUser, showAdminBoard, showModeratorBoard, logOut, onMounted, onBeforeUnmount}
   }
 })
 </script>
